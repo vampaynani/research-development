@@ -13,18 +13,19 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Digital Dealers Research & Development
+title: Vampaynani's Research & Development
 email: vampay@digitaldealers.mx
 description: >- # this means to ignore newlines until "baseurl:"
   Un compilado de tips & tricks en desarrollo, diseño y educación
 baseurl: "/research-development" # the subpath of your site, e.g. /blog
 url: "https://vampaynani.github.io/research-development" # the base hostname & protocol for your site, e.g. http://example.com
+permalink: /:year/:month/:day/:title/
 twitter_username: vampaynani
 github_username:  vampaynani
 
 # Build settings
 markdown: kramdown
-theme: minima
+#theme: minima
 plugins:
   - jekyll-feed
 
