@@ -89,7 +89,7 @@ Con esta solución fue necesario crear dos modelos extra para guardar los datos 
 <span class="p">});</span>
 </code></pre></div></div>
 <p>Para utilizar este modelo, se puede seguir el código siguiente:</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">updateStudentRole</span><span class="p">(){</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">updateStudentRole</span> <span class="o">=</span> <span class="k">async</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">updateObj</span> <span class="o">=</span> <span class="p">{</span><span class="na">birthDate</span><span class="p">:</span> <span class="s1">'2018-10-04'</span><span class="p">,</span>
     <span class="na">tutor</span><span class="p">:</span> <span class="s1">'Someone'</span><span class="p">,</span>
     <span class="na">annualEnrollment</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
@@ -101,9 +101,7 @@ Con esta solución fue necesario crear dos modelos extra para guardar los datos 
     <span class="na">_id</span><span class="p">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">role</span>
   <span class="p">},</span> <span class="nx">updateObj</span><span class="p">);</span>
   
-  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">student</span><span class="p">){</span>
-    <span class="nx">student</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">Student</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">updateObj</span><span class="p">);</span>
-  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">student</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">Student</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">updateObj</span><span class="p">);</span>
   
   <span class="nx">user</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">User</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">role</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span>
