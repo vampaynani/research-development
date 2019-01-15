@@ -43,7 +43,7 @@ const TeacherRoleSchema = new mongoose.Schema({
 ```
 Para utilizar este modelo, se puede seguir el código siguiente:
 ```javascript
-function updateStudentRole(){
+const updateStudentRole = async() {
   const updateObj = {birthDate: '2018-10-04',
     tutor: 'Someone',
     annualEnrollment: 1500,
@@ -55,9 +55,7 @@ function updateStudentRole(){
     _id: user.role
   }, updateObj);
   
-  if(!student){
-    student = await Student.create(updateObj);
-  }
+  const student = await Student.create(updateObj);
   
   user = await User.findByIdAndUpdate(args.id, {
     role: student.id
