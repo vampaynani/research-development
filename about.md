@@ -13,4 +13,4 @@ Hola, espero disfrutes esta colección de publicaciones que intentaré hacer per
 
 La razón de este espacio es que disfruto mucho de aprender de campos nuevos y diferentes que trato de mezclar y aplicar en mi trabajo como consultor de desarrollo full stack para startups y agencias de publicidad que requieren del desarrollo de aplicaciones multiplataforma, móviles o interactivas.
 
-Me gusta trabajar como guía y mentor, debido a eso he descubierto que a veces es complicado encontrar fuentes de información confiables, por esta razón es que trataré de alimentar este canal con información fiable y de confianza.
+Me gusta trabajar como guía y mentor, debido a eso he descubierto que a veces es complicado encontrar fuentes de información confiables, por esta razón es que trataré de alimentar este canal con información práctica y fiable.
