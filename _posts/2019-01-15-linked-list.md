@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Linked List"
+title:  "NodeJS Linked List"
 date:   2019-01-15 00:00:00 -0600
 categories: computer science data structures linked list
 ---
@@ -17,7 +17,7 @@ class Node {
  }
 ```
 
-### Clase _LinkedList_
+### Clase _Linked List_
 ```javascript
 class LinkedList {
   constructor(){
@@ -92,7 +92,6 @@ class LinkedList {
 ```
 ### Implementación
 ```javascript
-// Driver program
 llist = new LinkedList();
 llist.push(7);
 let node = llist.push(1);
