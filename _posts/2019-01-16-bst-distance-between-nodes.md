@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "NodeJS Binary Search Tree(distance between nodes)"
+title:  "NodeJS Binary Search Tree(||) - Distance between nodes"
 date:   2019-01-15 00:00:00 -0600
 categories: computer science data structures binary search tree
 ---
@@ -41,7 +41,7 @@ distanceBetweenNodes(currentAncestor, n1, n2) {
     return this.distanceBetweenNodes(currentAncestor.right, n1, n2);
   }
   if(currentAncestor.data >= n1 && currentAncestor.data <= n2) {
-    return this.distanceFromRoot(currentAncestor, n1) + this.distanceFromRoot(currentAncestor, n2);
+    return this.distanceFromAncestor(currentAncestor, n1) + this.distanceFromAncestor(currentAncestor, n2);
   }
 }
 ```
@@ -78,18 +78,18 @@ distanceBetweenNodes(currentAncestor, n1, n2) {
       return node;
     }
   }
-  distanceFromRoot(currentAncestor, node) {
+  distanceFromAncestor(currentAncestor, node) {
     if(!currentAncestor || currentAncestor.data === node) {
       return 0;
     }
     if(currentAncestor.data > node) {
-      return 1 + this.distanceFromRoot(currentAncestor.left, node);
+      return 1 + this.distanceFromAncestor(currentAncestor.left, node);
     }
     if(currentAncestor.data < node) {
-      return 1 + this.distanceFromRoot(currentAncestor.right, node);
+      return 1 + this.distanceFromAncestor(currentAncestor.right, node);
     }
   }
-  distanceBetweenNodes(currentAncestor, n1, n2) {
+  distanceBetweenNodes(n1, n2, currentAncestor) {
     if(!currentAncestor) {
       currentAncestor = this.root;
     }
@@ -99,13 +99,13 @@ distanceBetweenNodes(currentAncestor, n1, n2) {
       n1 = temp;
     }
     if(currentAncestor.data > n1 && currentAncestor.data > n2){
-      return this.distanceBetweenNodes(currentAncestor.left, n1, n2);
+      return this.distanceBetweenNodes(n1, n2, currentAncestor.left);
     }
     if(currentAncestor.data < n1 && currentAncestor.data < n2) {
-      return this.distanceBetweenNodes(currentAncestor.right, n1, n2);
+      return this.distanceBetweenNodes(n1, n2, currentAncestor.right);
     }
     if(currentAncestor.data >= n1 && currentAncestor.data <= n2) {
-      return this.distanceFromRoot(currentAncestor, n1) + this.distanceFromRoot(currentAncestor, n2);
+      return this.distanceFromAncestor(currentAncestor, n1) + this.distanceFromAncestor(currentAncestor, n2);
     }
   }
 }
@@ -117,5 +117,5 @@ bst.add(8);
 bst.add(3);
 bst.add(4);
 bst.add(10);
-console.log(bst.distanceBetweenNodes(null, 10, 8));
+console.log(bst.distanceBetweenNodes(10, 8));
 ```
