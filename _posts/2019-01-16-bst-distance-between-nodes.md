@@ -25,7 +25,7 @@ Obtener la distancia entre nodos tomando en cuenta las dos siguientes considerac
 1. Si el argumento _currentAncestor_ es nulo, entonces se tomará en cuenta el nodo raíz
 2. el nodo 1 siempre debe ser más pequeño que el nodo 2.
 ```javascript
-distanceBetweenNodes(currentAncestor, n1, n2) {
+distanceBetweenNodes(n1, n2, currentAncestor) {
   if(!currentAncestor) {
     currentAncestor = this.root;
   }
