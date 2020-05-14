@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vampaynani.github.io/research-development/research-development/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vampaynani.github.io/research-development/research-development/" rel="alternate" type="text/html" /><updated>2019-06-26T20:58:19-05:00</updated><id>https://vampaynani.github.io/research-development/research-development/feed.xml</id><title type="html">Vampaynani’s Research &amp;amp; Development</title><subtitle>Un compilado de tips &amp; tricks en desarrollo, diseño y educación</subtitle><entry><title type="html">Make a multi resolution .ico file from ubuntu with image magick</title><link href="https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon/" rel="alternate" type="text/html" title="Make a multi resolution .ico file from ubuntu with image magick" /><published>2019-06-25T01:00:00-05:00</published><updated>2019-06-25T01:00:00-05:00</updated><id>https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon</id><content type="html" xml:base="https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon/">&lt;h2 id=&quot;1-install-image-magick-in-ubuntu&quot;&gt;1. Install Image Magick in Ubuntu.&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vampaynani.github.io/research-development/research-development/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vampaynani.github.io/research-development/research-development/" rel="alternate" type="text/html" /><updated>2020-05-14T02:50:20-05:00</updated><id>https://vampaynani.github.io/research-development/research-development/feed.xml</id><title type="html">Vampaynani’s Research &amp;amp; Development</title><subtitle>Un compilado de tips &amp; tricks en desarrollo, diseño y educación</subtitle><entry><title type="html">Connect to DO Database Cluster from DBeaver and Knex</title><link href="https://vampaynani.github.io/research-development/research-development/2020/05/14/connect-to-do-database-cluster/" rel="alternate" type="text/html" title="Connect to DO Database Cluster from DBeaver and Knex" /><published>2020-05-14T01:00:00-05:00</published><updated>2020-05-14T01:00:00-05:00</updated><id>https://vampaynani.github.io/research-development/research-development/2020/05/14/connect-to-do-database-cluster</id><content type="html" xml:base="https://vampaynani.github.io/research-development/research-development/2020/05/14/connect-to-do-database-cluster/">&lt;h2 id=&quot;dbeaver&quot;&gt;DBeaver&lt;/h2&gt;
+
+&lt;p&gt;Once in your database view on Digital Ocean, go to Overview tab and select Connection details.
+Download the ca-certificate.crt.
+Go to DBeaver and select “New Database Connection / PostgreSQL”
+On Main tab set Host, Port, Database, User, Password copying it from the Connection parameters set in Digital Ocean.
+On SSL tab select “Use SSL” and set as Root certificate the downloaded cert.
+Ready to go!&lt;/p&gt;
+
+&lt;h2 id=&quot;knex&quot;&gt;Knex&lt;/h2&gt;
+
+&lt;p&gt;Once in your database view on Digital Ocean, go to Overview tab and select Connection details.
+Select Connection string tab and choose between public/private network.
+Then just copy the connection string and save it as DATABASE_URL in the &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; file of your project.
+Once, the previous steps are complete, set the &lt;code class=&quot;highlighter-rouge&quot;&gt;knexfile.js&lt;/code&gt; to be like:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;development&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;postgresql://postgres@localhost/your-db&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;production&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DATABASE_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;ssl=true`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The last part of &lt;code class=&quot;highlighter-rouge&quot;&gt;production.connection&lt;/code&gt; is quite important, if that flag is not set you will have an SSL error.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">DBeaver Once in your database view on Digital Ocean, go to Overview tab and select Connection details. Download the ca-certificate.crt. Go to DBeaver and select “New Database Connection / PostgreSQL” On Main tab set Host, Port, Database, User, Password copying it from the Connection parameters set in Digital Ocean. On SSL tab select “Use SSL” and set as Root certificate the downloaded cert. Ready to go! Knex Once in your database view on Digital Ocean, go to Overview tab and select Connection details. Select Connection string tab and choose between public/private network. Then just copy the connection string and save it as DATABASE_URL in the .env file of your project. Once, the previous steps are complete, set the knexfile.js to be like: export default { development: { client: &quot;pg&quot;, connection: &quot;postgresql://postgres@localhost/your-db&quot;, }, production: { client: &quot;pg&quot;, connection: `${process.env.DATABASE_URL}&amp;amp;ssl=true`, }, }; The last part of production.connection is quite important, if that flag is not set you will have an SSL error.</summary></entry><entry><title type="html">Make a multi resolution .ico file from ubuntu with image magick</title><link href="https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon/" rel="alternate" type="text/html" title="Make a multi resolution .ico file from ubuntu with image magick" /><published>2019-06-25T01:00:00-05:00</published><updated>2019-06-25T01:00:00-05:00</updated><id>https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon</id><content type="html" xml:base="https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon/">&lt;h2 id=&quot;1-install-image-magick-in-ubuntu&quot;&gt;1. Install Image Magick in Ubuntu.&lt;/h2&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gcc imagemagick
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -409,39 +440,4 @@ Con esta solución fue necesario crear dos modelos extra para guardar los datos 
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;De esta manera se pueden guardar o actualizar los datos específicos del rol y en caso de que un estudiante pase a ser profesor. Su rol puede ser actualizado sin tener que generar un nuevo usuario.&lt;/p&gt;</content><author><name></name></author><summary type="html">Me encontré con un caso particular en el que un usuario podía tener uno de dos tipos de roles(alumno o profesor), los dos debían hacer login desde el mismo endpoint y para registrarse lo hacían con los mismos datos(correo, nombre y apellidos), la diferencia entre estos sucede al llenar un perfil correspondiente a su rol, por ejemplo: de uno guardamos su cuota mensual y del otro las horas de trabajo.</summary></entry><entry><title type="html">Añadir ANDROID_HOME al path en MAC OS</title><link href="https://vampaynani.github.io/research-development/research-development/2015/05/27/anadir-android-home-al-path-en-mac-os/" rel="alternate" type="text/html" title="Añadir ANDROID_HOME al path en MAC OS" /><published>2015-05-27T01:00:00-05:00</published><updated>2015-05-27T01:00:00-05:00</updated><id>https://vampaynani.github.io/research-development/research-development/2015/05/27/anadir-android-home-al-path-en-mac-os</id><content type="html" xml:base="https://vampaynani.github.io/research-development/research-development/2015/05/27/anadir-android-home-al-path-en-mac-os/">&lt;p&gt;Siempre que se vaya a utilizar el Android SDK con algún compilador externo, llámese Adobe AIR, Ionic, Phonegap, Cordova, etc. Es necesario agregar &lt;strong&gt;ANDROID_HOME&lt;/strong&gt; como environment variable, o en español, que las herramientas del SDK de Android se puedan ejecutar desde cualquier ubicación en nuestro sistema de archivos. A continuación dejo una lista de pocos pasos para agregar esta variable de entorno a tu bash sin dolor.&lt;/p&gt;
-
-&lt;p&gt;Descargar e Instalar &lt;strong&gt;Android Studio&lt;/strong&gt; desde: https://developer.android.com/sdk/&lt;/p&gt;
-
-&lt;p&gt;Instalar desde el &lt;strong&gt;SDK Manager&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Tools &amp;gt; Android SDK Tools&lt;/li&gt;
-  &lt;li&gt;Tools &amp;gt; Android SDK Platform-tools&lt;/li&gt;
-  &lt;li&gt;Tools &amp;gt; Android SDK Build-tools&lt;/li&gt;
-  &lt;li&gt;SDK Platform (most recent version)&amp;gt; SDK Platform&lt;/li&gt;
-  &lt;li&gt;SDK Platform (most recent version) &amp;gt; ARM EABI v7a System Image&lt;/li&gt;
-  &lt;li&gt;Extras -&amp;gt; Android Support Repository&lt;/li&gt;
-  &lt;li&gt;Extras &amp;gt; Android Support Library&lt;/li&gt;
-  &lt;li&gt;Extras -&amp;gt; Google Repository&lt;/li&gt;
-  &lt;li&gt;Extras &amp;gt; Intel x86 Emulator Accelerator (HAXM installer)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;En la &lt;strong&gt;Terminal&lt;/strong&gt; escribir:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;En el archivo que se muestra, escribir lo siguiente:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/Users/&amp;lt;nombre_del_usuario&amp;gt;/Library/Android/sdk
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;/tools:&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;/platform-tools
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Para cerrarlo, presionar &lt;em&gt;ctrl+x&lt;/em&gt; después &lt;em&gt;Y&lt;/em&gt; y por último, &lt;em&gt;enter&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para corroborar el path de &lt;strong&gt;ANDROID_HOME&lt;/strong&gt;, revisar en la parte superior del &lt;strong&gt;SDK Manager&lt;/strong&gt; el campo de &lt;strong&gt;SDK Path&lt;/strong&gt;:
-&lt;img src=&quot;https://digitaldealers.mx/imgs/blog/2015_05_28_01.32.54.png&quot; alt=&quot;sdk image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Cerrar esa ventana de la terminal y abrir una nueva para que el path se refresque e incluya las tools de Android que se han agregado.&lt;/p&gt;
-
-&lt;p&gt;Para probar y de paso saber que dispositivos Android están conectados a la pc y disponibles, tanto reales como virtuales usar la instrucción:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;adb devices
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Y listo, el Android SDK y todas sus herramientas están disponibles para ser ejecutados desde cualquier ruta.&lt;/p&gt;</content><author><name></name></author><summary type="html">Siempre que se vaya a utilizar el Android SDK con algún compilador externo, llámese Adobe AIR, Ionic, Phonegap, Cordova, etc. Es necesario agregar ANDROID_HOME como environment variable, o en español, que las herramientas del SDK de Android se puedan ejecutar desde cualquier ubicación en nuestro sistema de archivos. A continuación dejo una lista de pocos pasos para agregar esta variable de entorno a tu bash sin dolor.</summary></entry></feed>
+&lt;p&gt;De esta manera se pueden guardar o actualizar los datos específicos del rol y en caso de que un estudiante pase a ser profesor. Su rol puede ser actualizado sin tener que generar un nuevo usuario.&lt;/p&gt;</content><author><name></name></author><summary type="html">Me encontré con un caso particular en el que un usuario podía tener uno de dos tipos de roles(alumno o profesor), los dos debían hacer login desde el mismo endpoint y para registrarse lo hacían con los mismos datos(correo, nombre y apellidos), la diferencia entre estos sucede al llenar un perfil correspondiente a su rol, por ejemplo: de uno guardamos su cuota mensual y del otro las horas de trabajo.</summary></entry></feed>
