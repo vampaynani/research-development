@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Mongoose Dynamic References(Polymorphic Reference) | Vampaynani’s Research &amp; Development</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Mongoose Dynamic References(Polymorphic Reference)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Me encontré con un caso particular en el que un usuario podía tener uno de dos tipos de roles(alumno o profesor), los dos debían hacer login desde el mismo endpoint y para registrarse lo hacían con los mismos datos(correo, nombre y apellidos), la diferencia entre estos sucede al llenar un perfil correspondiente a su rol, por ejemplo: de uno guardamos su cuota mensual y del otro las horas de trabajo." />
+<meta property="og:description" content="Me encontré con un caso particular en el que un usuario podía tener uno de dos tipos de roles(alumno o profesor), los dos debían hacer login desde el mismo endpoint y para registrarse lo hacían con los mismos datos(correo, nombre y apellidos), la diferencia entre estos sucede al llenar un perfil correspondiente a su rol, por ejemplo: de uno guardamos su cuota mensual y del otro las horas de trabajo." />
+<link rel="canonical" href="https://vampaynani.github.io/research-development/research-development/2018/10/04/mongoose-dynamic-references-polymorphic-reference/" />
+<meta property="og:url" content="https://vampaynani.github.io/research-development/research-development/2018/10/04/mongoose-dynamic-references-polymorphic-reference/" />
+<meta property="og:site_name" content="Vampaynani’s Research &amp; Development" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-04T01:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2018-10-04T01:00:00-05:00","headline":"Mongoose Dynamic References(Polymorphic Reference)","mainEntityOfPage":{"@type":"WebPage","@id":"https://vampaynani.github.io/research-development/research-development/2018/10/04/mongoose-dynamic-references-polymorphic-reference/"},"description":"Me encontré con un caso particular en el que un usuario podía tener uno de dos tipos de roles(alumno o profesor), los dos debían hacer login desde el mismo endpoint y para registrarse lo hacían con los mismos datos(correo, nombre y apellidos), la diferencia entre estos sucede al llenar un perfil correspondiente a su rol, por ejemplo: de uno guardamos su cuota mensual y del otro las horas de trabajo.","url":"https://vampaynani.github.io/research-development/research-development/2018/10/04/mongoose-dynamic-references-polymorphic-reference/","dateModified":"2018-10-04T01:00:00-05:00","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/research-development/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://vampaynani.github.io/research-development/research-development/feed.xml" title="Vampaynani's Research & Development" /><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40504202-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-40504202-4');
+</script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/research-development/">Vampaynani&#39;s Research &amp; Development</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/research-development/about/">Acerca de</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Mongoose Dynamic References(Polymorphic Reference)</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-10-04T01:00:00-05:00" itemprop="datePublished">Oct 4, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Me encontré con un caso particular en el que un usuario podía tener uno de dos tipos de roles(alumno o profesor), los dos debían hacer login desde el mismo endpoint y para registrarse lo hacían con los mismos datos(correo, nombre y apellidos), la diferencia entre estos sucede al llenar un perfil correspondiente a su rol, por ejemplo: de uno guardamos su cuota mensual y del otro las horas de trabajo.</p>
+
+<p>Para cubrir estos requerimientos con un modelo NoSQL encontré la siguiente solución como lo que mejor se acomoda al resultado requerido:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'mongoose'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">UserSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+  <span class="na">email</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">password</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> 
+  <span class="na">lastname</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="na">role</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+    <span class="na">refPath</span><span class="p">:</span> <span class="s1">'roleType'</span>
+  <span class="p">},</span>
+  <span class="na">roleType</span><span class="p">:{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Teacher'</span><span class="p">,</span> <span class="s1">'Student'</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>Siendo roleType el tipo de rol(el cual a su vez es el nombre del modelo que guardará la información extra) y role el ObjectId correspondiente a la colección a la que se hace referencia.
+Con esta solución fue necesario crear dos modelos extra para guardar los datos de los roles especificados en el roleType.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">StudentRoleSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+  <span class="na">birthDate</span><span class="p">:</span> <span class="nb">Date</span><span class="p">,</span>
+  <span class="na">tutor</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">annualEnrollment</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+  <span class="na">monthlyTuition</span><span class="p">:</span> <span class="nb">Number</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">TeacherRoleSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+  <span class="na">weeklyTotalHours</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+  <span class="na">contract</span><span class="p">:</span> <span class="nb">String</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>Para utilizar este modelo, se puede seguir el código siguiente:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">updateStudentRole</span> <span class="o">=</span> <span class="k">async</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">updateObj</span> <span class="o">=</span> <span class="p">{</span><span class="na">birthDate</span><span class="p">:</span> <span class="s1">'2018-10-04'</span><span class="p">,</span>
+    <span class="na">tutor</span><span class="p">:</span> <span class="s1">'Someone'</span><span class="p">,</span>
+    <span class="na">annualEnrollment</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+    <span class="na">monthlyTuition</span><span class="p">:</span> <span class="mi">1200</span>
+  <span class="p">};</span>
+
+  <span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">User</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">studentRole</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">StudentRole</span><span class="p">.</span><span class="nx">findOneAndUpdate</span><span class="p">({</span>
+    <span class="na">_id</span><span class="p">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">role</span>
+  <span class="p">},</span> <span class="nx">updateObj</span><span class="p">);</span>
+  
+  <span class="kd">const</span> <span class="nx">student</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">Student</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">updateObj</span><span class="p">);</span>
+  
+  <span class="nx">user</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">User</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">role</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span>
+  <span class="p">},</span> <span class="p">{</span><span class="na">new</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
+  
+  <span class="k">return</span> <span class="nx">user</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>De esta manera se pueden guardar o actualizar los datos específicos del rol y en caso de que un estudiante pase a ser profesor. Su rol puede ser actualizado sin tener que generar un nuevo usuario.</p>
+
+  </div><a class="u-url" href="/research-development/2018/10/04/mongoose-dynamic-references-polymorphic-reference/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/research-development/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Vampaynani&#39;s Research &amp; Development</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Vampaynani&#39;s Research &amp; Development</li><li><a class="u-email" href="mailto:vampay@digitaldealers.mx">vampay@digitaldealers.mx</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/vampaynani"><svg class="svg-icon"><use xlink:href="/research-development/assets/minima-social-icons.svg#github"></use></svg> <span class="username">vampaynani</span></a></li><li><a href="https://www.twitter.com/vampaynani"><svg class="svg-icon"><use xlink:href="/research-development/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">vampaynani</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Un compilado de tips &amp; tricks en desarrollo, diseño y educación</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Añadir ANDROID_HOME al path en MAC OS | Vampaynani’s Research &amp; Development</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Añadir ANDROID_HOME al path en MAC OS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Siempre que se vaya a utilizar el Android SDK con algún compilador externo, llámese Adobe AIR, Ionic, Phonegap, Cordova, etc. Es necesario agregar ANDROID_HOME como environment variable, o en español, que las herramientas del SDK de Android se puedan ejecutar desde cualquier ubicación en nuestro sistema de archivos. A continuación dejo una lista de pocos pasos para agregar esta variable de entorno a tu bash sin dolor." />
+<meta property="og:description" content="Siempre que se vaya a utilizar el Android SDK con algún compilador externo, llámese Adobe AIR, Ionic, Phonegap, Cordova, etc. Es necesario agregar ANDROID_HOME como environment variable, o en español, que las herramientas del SDK de Android se puedan ejecutar desde cualquier ubicación en nuestro sistema de archivos. A continuación dejo una lista de pocos pasos para agregar esta variable de entorno a tu bash sin dolor." />
+<link rel="canonical" href="https://vampaynani.github.io/research-development/research-development/2015/05/27/anadir-android-home-al-path-en-mac-os/" />
+<meta property="og:url" content="https://vampaynani.github.io/research-development/research-development/2015/05/27/anadir-android-home-al-path-en-mac-os/" />
+<meta property="og:site_name" content="Vampaynani’s Research &amp; Development" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-05-27T01:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2015-05-27T01:00:00-05:00","headline":"Añadir ANDROID_HOME al path en MAC OS","mainEntityOfPage":{"@type":"WebPage","@id":"https://vampaynani.github.io/research-development/research-development/2015/05/27/anadir-android-home-al-path-en-mac-os/"},"description":"Siempre que se vaya a utilizar el Android SDK con algún compilador externo, llámese Adobe AIR, Ionic, Phonegap, Cordova, etc. Es necesario agregar ANDROID_HOME como environment variable, o en español, que las herramientas del SDK de Android se puedan ejecutar desde cualquier ubicación en nuestro sistema de archivos. A continuación dejo una lista de pocos pasos para agregar esta variable de entorno a tu bash sin dolor.","url":"https://vampaynani.github.io/research-development/research-development/2015/05/27/anadir-android-home-al-path-en-mac-os/","dateModified":"2015-05-27T01:00:00-05:00","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/research-development/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://vampaynani.github.io/research-development/research-development/feed.xml" title="Vampaynani's Research & Development" /><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40504202-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-40504202-4');
+</script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/research-development/">Vampaynani&#39;s Research &amp; Development</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/research-development/about/">Acerca de</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Añadir ANDROID_HOME al path en MAC OS</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-05-27T01:00:00-05:00" itemprop="datePublished">May 27, 2015
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Siempre que se vaya a utilizar el Android SDK con algún compilador externo, llámese Adobe AIR, Ionic, Phonegap, Cordova, etc. Es necesario agregar <strong>ANDROID_HOME</strong> como environment variable, o en español, que las herramientas del SDK de Android se puedan ejecutar desde cualquier ubicación en nuestro sistema de archivos. A continuación dejo una lista de pocos pasos para agregar esta variable de entorno a tu bash sin dolor.</p>
+
+<p>Descargar e Instalar <strong>Android Studio</strong> desde: https://developer.android.com/sdk/</p>
+
+<p>Instalar desde el <strong>SDK Manager</strong>:</p>
+<ul>
+  <li>Tools &gt; Android SDK Tools</li>
+  <li>Tools &gt; Android SDK Platform-tools</li>
+  <li>Tools &gt; Android SDK Build-tools</li>
+  <li>SDK Platform (most recent version)&gt; SDK Platform</li>
+  <li>SDK Platform (most recent version) &gt; ARM EABI v7a System Image</li>
+  <li>Extras -&gt; Android Support Repository</li>
+  <li>Extras &gt; Android Support Library</li>
+  <li>Extras -&gt; Google Repository</li>
+  <li>Extras &gt; Intel x86 Emulator Accelerator (HAXM installer)</li>
+</ul>
+
+<p>En la <strong>Terminal</strong> escribir:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>nano ~/.bash_profile
+</code></pre></div></div>
+<p>En el archivo que se muestra, escribir lo siguiente:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">ANDROID_HOME</span><span class="o">=</span>/Users/&lt;nombre_del_usuario&gt;/Library/Android/sdk
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span>:<span class="nv">$ANDROID_HOME</span>/tools:<span class="nv">$ANDROID_HOME</span>/platform-tools
+</code></pre></div></div>
+<p>Para cerrarlo, presionar <em>ctrl+x</em> después <em>Y</em> y por último, <em>enter</em>.</p>
+
+<p>Para corroborar el path de <strong>ANDROID_HOME</strong>, revisar en la parte superior del <strong>SDK Manager</strong> el campo de <strong>SDK Path</strong>:
+<img src="https://digitaldealers.mx/imgs/blog/2015_05_28_01.32.54.png" alt="sdk image" /></p>
+
+<p>Cerrar esa ventana de la terminal y abrir una nueva para que el path se refresque e incluya las tools de Android que se han agregado.</p>
+
+<p>Para probar y de paso saber que dispositivos Android están conectados a la pc y disponibles, tanto reales como virtuales usar la instrucción:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>adb devices
+</code></pre></div></div>
+<p>Y listo, el Android SDK y todas sus herramientas están disponibles para ser ejecutados desde cualquier ruta.</p>
+
+  </div><a class="u-url" href="/research-development/2015/05/27/anadir-android-home-al-path-en-mac-os/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/research-development/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Vampaynani&#39;s Research &amp; Development</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Vampaynani&#39;s Research &amp; Development</li><li><a class="u-email" href="mailto:vampay@digitaldealers.mx">vampay@digitaldealers.mx</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/vampaynani"><svg class="svg-icon"><use xlink:href="/research-development/assets/minima-social-icons.svg#github"></use></svg> <span class="username">vampaynani</span></a></li><li><a href="https://www.twitter.com/vampaynani"><svg class="svg-icon"><use xlink:href="/research-development/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">vampaynani</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Un compilado de tips &amp; tricks en desarrollo, diseño y educación</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
