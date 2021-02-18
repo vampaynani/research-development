@@ -2,9 +2,9 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Connect to DO Database Cluster from DBeaver and Knex | Vampaynani’s Research &amp; Development</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v3.8.7" />
 <meta property="og:title" content="Connect to DO Database Cluster from DBeaver and Knex" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="DBeaver Once in your database view on Digital Ocean, go to Overview tab and select Connection details. Download the ca-certificate.crt. Go to DBeaver and select “New Database Connection / PostgreSQL” On Main tab set Host, Port, Database, User, Password copying it from the Connection parameters set in Digital Ocean. On SSL tab select “Use SSL” and set as Root certificate the downloaded cert. Ready to go! Knex Once in your database view on Digital Ocean, go to Overview tab and select Connection details. Select Connection string tab and choose between public/private network. Then just copy the connection string and save it as DATABASE_URL in the .env file of your project. Once, the previous steps are complete, set the knexfile.js to be like: export default { development: { client: &quot;pg&quot;, connection: &quot;postgresql://postgres@localhost/your-db&quot;, }, production: { client: &quot;pg&quot;, connection: `${process.env.DATABASE_URL}&amp;ssl=true`, }, }; The last part of production.connection is quite important, if that flag is not set you will have an SSL error." />
@@ -14,10 +14,21 @@
 <meta property="og:site_name" content="Vampaynani’s Research &amp; Development" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-05-14T01:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Connect to DO Database Cluster from DBeaver and Knex" />
 <script type="application/ld+json">
-{"datePublished":"2020-05-14T01:00:00-05:00","headline":"Connect to DO Database Cluster from DBeaver and Knex","mainEntityOfPage":{"@type":"WebPage","@id":"https://vampaynani.github.io/research-development/research-development/2020/05/14/connect-to-do-database-cluster/"},"description":"DBeaver Once in your database view on Digital Ocean, go to Overview tab and select Connection details. Download the ca-certificate.crt. Go to DBeaver and select “New Database Connection / PostgreSQL” On Main tab set Host, Port, Database, User, Password copying it from the Connection parameters set in Digital Ocean. On SSL tab select “Use SSL” and set as Root certificate the downloaded cert. Ready to go! Knex Once in your database view on Digital Ocean, go to Overview tab and select Connection details. Select Connection string tab and choose between public/private network. Then just copy the connection string and save it as DATABASE_URL in the .env file of your project. Once, the previous steps are complete, set the knexfile.js to be like: export default { development: { client: &quot;pg&quot;, connection: &quot;postgresql://postgres@localhost/your-db&quot;, }, production: { client: &quot;pg&quot;, connection: `${process.env.DATABASE_URL}&amp;ssl=true`, }, }; The last part of production.connection is quite important, if that flag is not set you will have an SSL error.","url":"https://vampaynani.github.io/research-development/research-development/2020/05/14/connect-to-do-database-cluster/","dateModified":"2020-05-14T01:00:00-05:00","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"headline":"Connect to DO Database Cluster from DBeaver and Knex","dateModified":"2020-05-14T01:00:00-05:00","datePublished":"2020-05-14T01:00:00-05:00","description":"DBeaver Once in your database view on Digital Ocean, go to Overview tab and select Connection details. Download the ca-certificate.crt. Go to DBeaver and select “New Database Connection / PostgreSQL” On Main tab set Host, Port, Database, User, Password copying it from the Connection parameters set in Digital Ocean. On SSL tab select “Use SSL” and set as Root certificate the downloaded cert. Ready to go! Knex Once in your database view on Digital Ocean, go to Overview tab and select Connection details. Select Connection string tab and choose between public/private network. Then just copy the connection string and save it as DATABASE_URL in the .env file of your project. Once, the previous steps are complete, set the knexfile.js to be like: export default { development: { client: &quot;pg&quot;, connection: &quot;postgresql://postgres@localhost/your-db&quot;, }, production: { client: &quot;pg&quot;, connection: `${process.env.DATABASE_URL}&amp;ssl=true`, }, }; The last part of production.connection is quite important, if that flag is not set you will have an SSL error.","mainEntityOfPage":{"@type":"WebPage","@id":"https://vampaynani.github.io/research-development/research-development/2020/05/14/connect-to-do-database-cluster/"},"url":"https://vampaynani.github.io/research-development/research-development/2020/05/14/connect-to-do-database-cluster/","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/research-development/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://vampaynani.github.io/research-development/research-development/feed.xml" title="Vampaynani's Research & Development" /></head>
+<link rel="stylesheet" href="/research-development/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://vampaynani.github.io/research-development/research-development/feed.xml" title="Vampaynani's Research &amp; Development" /><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40504202-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-40504202-4');
+</script>
+</head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/research-development/">Vampaynani&#39;s Research &amp; Development</a><nav class="site-nav">
@@ -63,12 +74,12 @@ Once, the previous steps are complete, set the <code class="highlighter-rouge">k
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="na">development</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">client</span><span class="p">:</span> <span class="s2">"pg"</span><span class="p">,</span>
-    <span class="na">connection</span><span class="p">:</span> <span class="s2">"postgresql://postgres@localhost/your-db"</span><span class="p">,</span>
+    <span class="na">client</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pg</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">connection</span><span class="p">:</span> <span class="dl">"</span><span class="s2">postgresql://postgres@localhost/your-db</span><span class="dl">"</span><span class="p">,</span>
   <span class="p">},</span>
 
   <span class="na">production</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">client</span><span class="p">:</span> <span class="s2">"pg"</span><span class="p">,</span>
+    <span class="na">client</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pg</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">connection</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_URL</span><span class="p">}</span><span class="s2">&amp;ssl=true`</span><span class="p">,</span>
   <span class="p">},</span>
 <span class="p">};</span>
