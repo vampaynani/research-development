@@ -1,39 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vampaynani.github.io/research-development/research-development/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vampaynani.github.io/research-development/research-development/" rel="alternate" type="text/html" /><updated>2021-02-17T19:02:11-06:00</updated><id>https://vampaynani.github.io/research-development/research-development/feed.xml</id><title type="html">Vampaynani’s Research &amp;amp; Development</title><subtitle>Un compilado de tips &amp; tricks en desarrollo, diseño y educación</subtitle><entry><title type="html">Edinba Workshop Evidence</title><link href="https://vampaynani.github.io/research-development/research-development/2021/02/17/edinba-workshop-evidence/" rel="alternate" type="text/html" title="Edinba Workshop Evidence" /><published>2021-02-17T00:00:00-06:00</published><updated>2021-02-17T00:00:00-06:00</updated><id>https://vampaynani.github.io/research-development/research-development/2021/02/17/edinba-workshop-evidence</id><content type="html" xml:base="https://vampaynani.github.io/research-development/research-development/2021/02/17/edinba-workshop-evidence/">&lt;h1 id=&quot;taller-de-introducción-al-desarrollo-de-publicaciones-web&quot;&gt;Taller de introducción al desarrollo de publicaciones web&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vampaynani.github.io/research-development/research-development/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vampaynani.github.io/research-development/research-development/" rel="alternate" type="text/html" /><updated>2021-02-17T19:06:17-06:00</updated><id>https://vampaynani.github.io/research-development/research-development/feed.xml</id><title type="html">Vampaynani’s Research &amp;amp; Development</title><subtitle>Un compilado de tips &amp; tricks en desarrollo, diseño y educación</subtitle><entry><title type="html">Edinba Workshop Evidence</title><link href="https://vampaynani.github.io/research-development/research-development/2021/02/17/edinba-workshop-evidence/" rel="alternate" type="text/html" title="Edinba Workshop Evidence" /><published>2021-02-17T00:00:00-06:00</published><updated>2021-02-17T00:00:00-06:00</updated><id>https://vampaynani.github.io/research-development/research-development/2021/02/17/edinba-workshop-evidence</id><content type="html" xml:base="https://vampaynani.github.io/research-development/research-development/2021/02/17/edinba-workshop-evidence/">&lt;h1 id=&quot;taller-de-introducción-al-desarrollo-de-publicaciones-web&quot;&gt;Taller de introducción al desarrollo de publicaciones web&lt;/h1&gt;
 
 &lt;h2 id=&quot;evidencias-por-tema-de-las-prácticas-realizadas-en-el-taller&quot;&gt;Evidencias por tema de las prácticas realizadas en el taller&lt;/h2&gt;
 
 &lt;h3 id=&quot;implementación-de-layouts-html5-y-css&quot;&gt;Implementación de layouts (HTML5 y CSS)&lt;/h3&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;[Layout 1&lt;/td&gt;
-      &lt;td&gt;css](https://ckc4d.csb.app/)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;a href=&quot;https://ckc4d.csb.app/&quot;&gt;Layout 1 :: css&lt;/a&gt;&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;[Layout 2&lt;/td&gt;
-      &lt;td&gt;advanced css](https://codepen.io/vampaynani/full/JaGMvj)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;a href=&quot;https://codepen.io/vampaynani/full/LmMqOK&quot;&gt;Layout 2 :: css animation&lt;/a&gt;&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;[Layout 3&lt;/td&gt;
-      &lt;td&gt;responsive](https://nsi38.csb.app/)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;a href=&quot;https://codepen.io/vampaynani/full/JaGMvj&quot;&gt;Layout 3 :: advanced css&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;css-animation&quot;&gt;CSS Animation&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://codepen.io/vampaynani/full/LmMqOK&quot;&gt;Layout 4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://nsi38.csb.app/&quot;&gt;Layout 4 :: responsive&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;interacción-con-el-usuario-js&quot;&gt;Interacción con el usuario (JS)&lt;/h3&gt;
 

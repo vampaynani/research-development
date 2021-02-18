@@ -11,15 +11,13 @@ categories: web development workshop
 
 ### Implementación de layouts (HTML5 y CSS)
 
-[Layout 1 | css](https://ckc4d.csb.app/)
+[Layout 1 :: css](https://ckc4d.csb.app/)
 
-[Layout 2 | advanced css](https://codepen.io/vampaynani/full/JaGMvj)
+[Layout 2 :: css animation](https://codepen.io/vampaynani/full/LmMqOK)
 
-[Layout 3 | responsive](https://nsi38.csb.app/)
+[Layout 3 :: advanced css](https://codepen.io/vampaynani/full/JaGMvj)
 
-### CSS Animation
-
-[Layout 4](https://codepen.io/vampaynani/full/LmMqOK)
+[Layout 4 :: responsive](https://nsi38.csb.app/)
 
 ### Interacción con el usuario (JS)
 
