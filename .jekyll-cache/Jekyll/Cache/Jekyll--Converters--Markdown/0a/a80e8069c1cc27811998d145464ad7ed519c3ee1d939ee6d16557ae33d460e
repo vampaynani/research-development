@@ -1,0 +1,54 @@
+I"�<p>Ejemplo de una clase de árbol binario de búsqueda con el métodos básico de <em>add</em>. Utiliza una clase nodo para guardar los datos de cada uno de los items almacenados en él.</p>
+
+<h3 id="clase-node">Clase <em>Node</em></h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">left</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">right</span> <span class="o">=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">left</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="nx">right</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="clase-binary-search-tree">Clase <em>Binary Search Tree</em></h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">BinarySearchTree</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">add</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">&lt;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">&gt;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="implementación">Implementación</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">bst</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BinarySearchTree</span><span class="p">();</span>
+<span class="nx">bst</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+<span class="nx">bst</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">bst</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="nx">bst</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div></div>
+:ET

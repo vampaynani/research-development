@@ -1,0 +1,26 @@
+I"�<p>Soy muy fan de la librería de GSAP desde que era TweenMax para AS3, además de que sigue pateando traseros a las animaciones de jQuery, Angular, las nativas de CSS3 y se da un quienvive con famo.us.</p>
+
+<p>Sin embargo y como todo, deben asegurarse de que es una librería robusta y no pueden experimentar tan fácil con tantas cosas por lo que de momento <a href="http://greensock.com/forums/topic/6967-css3-filters-support/">los filtros de CSS3 los tienen descartados hasta nuevo aviso</a>. Aunque eso no quiere decir que no haya manera de implementarlos como en el código que dejo a continuación:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">blur</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">brightness</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">};</span>
+<span class="nx">TweenLite</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="nx">filters</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">blur</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="na">brightness</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span>
+  <span class="na">onUpdate</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span>
+      <span class="dl">'</span><span class="s1">filter</span><span class="dl">'</span><span class="p">,</span> 
+      <span class="s2">`blur(</span><span class="p">${</span><span class="nx">filters</span><span class="p">.</span><span class="nx">blur</span><span class="p">}</span><span class="s2">px)
+      brightness(</span><span class="p">${</span><span class="nx">filters</span><span class="p">.</span><span class="nx">brightness</span><span class="p">}</span><span class="s2">)`</span>
+    <span class="p">);</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span>
+      <span class="dl">'</span><span class="s1">-webkit-filter</span><span class="dl">'</span><span class="p">,</span> 
+      <span class="s2">`blur(</span><span class="p">${</span><span class="nx">filters</span><span class="p">.</span><span class="nx">blur</span><span class="p">}</span><span class="s2">px)
+      brightness(</span><span class="p">${</span><span class="nx">filters</span><span class="p">.</span><span class="nx">brightness</span><span class="p">}</span><span class="s2">)`</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+:ET

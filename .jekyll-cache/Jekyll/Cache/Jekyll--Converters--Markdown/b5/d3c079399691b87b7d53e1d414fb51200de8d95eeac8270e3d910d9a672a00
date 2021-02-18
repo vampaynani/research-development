@@ -1,0 +1,115 @@
+I"�G<p>Ejemplo de una clase de árbol binario de búsqueda agregando los métodos de <em>distanceBetweenNodes</em> y <em>distanceFromAncestor</em> para obtener la distancia entre nodos en un BST. Utiliza una clase nodo para guardar los datos de cada uno de los items almacenados en él.</p>
+
+<h3 id="métodos-a-agregar">Métodos a agregar</h3>
+<p>Obtener la distancia desde un nodo específico a un nodo ancestro.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">,</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentAncestor</span> <span class="o">||</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">===</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&gt;</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&lt;</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Obtener la distancia entre nodos tomando en cuenta las dos siguientes consideraciones:</p>
+<ol>
+  <li>Si el argumento <em>currentAncestor</em> es nulo, entonces se tomará en cuenta el nodo raíz</li>
+  <li>el nodo 1 siempre debe ser más pequeño que el nodo 2.
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">distanceBetweenNodes</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">currentAncestor</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentAncestor</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nx">currentAncestor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">n1</span> <span class="o">&gt;</span> <span class="nx">n2</span><span class="p">){</span>
+ <span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">n2</span><span class="p">;</span>
+ <span class="nx">n2</span> <span class="o">=</span> <span class="nx">n1</span><span class="p">;</span>
+ <span class="nx">n1</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&gt;</span> <span class="nx">n1</span> <span class="o">&amp;&amp;</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&gt;</span> <span class="nx">n2</span><span class="p">){</span>
+ <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceBetweenNodes</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&lt;</span> <span class="nx">n1</span> <span class="o">&amp;&amp;</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&lt;</span> <span class="nx">n2</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceBetweenNodes</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&gt;=</span> <span class="nx">n1</span> <span class="o">&amp;&amp;</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&lt;=</span> <span class="nx">n2</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">,</span> <span class="nx">n1</span><span class="p">)</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">,</span> <span class="nx">n2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <h3 id="clase-binary-search-tree-con-métodos-agregados">Clase <em>Binary Search Tree</em> con métodos agregados</h3>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">class</span> <span class="nx">BinarySearchTree</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">add</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+   <span class="k">return</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">&lt;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+     <span class="k">return</span><span class="p">;</span>
+   <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+   <span class="p">}</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">&gt;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+     <span class="k">return</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+   <span class="p">}</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="nx">node</span><span class="p">;</span>
+ <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">,</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentAncestor</span> <span class="o">||</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">===</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&gt;</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&lt;</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+ <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">distanceBetweenNodes</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">currentAncestor</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">currentAncestor</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">currentAncestor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">if</span><span class="p">(</span><span class="nx">n1</span> <span class="o">&gt;</span> <span class="nx">n2</span><span class="p">){</span>
+   <span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">n2</span><span class="p">;</span>
+   <span class="nx">n2</span> <span class="o">=</span> <span class="nx">n1</span><span class="p">;</span>
+   <span class="nx">n1</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&gt;</span> <span class="nx">n1</span> <span class="o">&amp;&amp;</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&gt;</span> <span class="nx">n2</span><span class="p">){</span>
+   <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceBetweenNodes</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&lt;</span> <span class="nx">n1</span> <span class="o">&amp;&amp;</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&lt;</span> <span class="nx">n2</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceBetweenNodes</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="k">if</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&gt;=</span> <span class="nx">n1</span> <span class="o">&amp;&amp;</span> <span class="nx">currentAncestor</span><span class="p">.</span><span class="nx">data</span> <span class="o">&lt;=</span> <span class="nx">n2</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">,</span> <span class="nx">n1</span><span class="p">)</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">distanceFromAncestor</span><span class="p">(</span><span class="nx">currentAncestor</span><span class="p">,</span> <span class="nx">n2</span><span class="p">);</span>
+ <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <h3 id="implementación">Implementación</h3>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">bst</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BinarySearchTree</span><span class="p">();</span>
+<span class="nx">bst</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+<span class="nx">bst</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">bst</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="nx">bst</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bst</span><span class="p">.</span><span class="nx">distanceBetweenNodes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET

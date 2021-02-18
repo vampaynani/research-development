@@ -1,0 +1,2 @@
+I"£<p>Sometimes you want to have data based on previously loaded data, so your variables depend on the previous fetch call, then is when we use promise chaining.</p>
+:ET

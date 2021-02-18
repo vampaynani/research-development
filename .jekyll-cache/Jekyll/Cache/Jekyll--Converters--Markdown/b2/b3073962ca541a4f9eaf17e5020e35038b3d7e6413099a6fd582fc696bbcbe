@@ -1,0 +1,2 @@
+I"�<p>Siempre que se vaya a utilizar el Android SDK con algún compilador externo, llámese Adobe AIR, Ionic, Phonegap, Cordova, etc. Es necesario agregar <strong>ANDROID_HOME</strong> como environment variable, o en español, que las herramientas del SDK de Android se puedan ejecutar desde cualquier ubicación en nuestro sistema de archivos. A continuación dejo una lista de pocos pasos para agregar esta variable de entorno a tu bash sin dolor.</p>
+:ET

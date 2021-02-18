@@ -1,0 +1,33 @@
+I"‰<p>Sometimes you want to have data based on previously loaded data, so your variables depend on the previous fetch call, then is when we use promise chaining.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">BASE_URL</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://swapi.co/api</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">getPersonWithHomeworld</span><span class="p">(</span><span class="nx">personId</span><span class="p">){</span>
+  <span class="c1">// Declare an empty variable to save the received response</span>
+  <span class="kd">let</span> <span class="nx">person</span><span class="p">;</span>
+  <span class="c1">// It's important to return the main fetch since it will return</span>
+  <span class="c1">// a promise, if the promise is not returned then the result</span>
+  <span class="c1">// belongs just to the scope of this function</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">BASE_URL</span><span class="p">}</span><span class="s2">/people/</span><span class="p">${</span><span class="nx">personId</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">_person</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Assign the parsed response to our declared variable</span>
+      <span class="nx">person</span> <span class="o">=</span> <span class="nx">_person</span><span class="p">;</span>
+      <span class="c1">// Do a fetch using the homeworld url from the received person</span>
+      <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">homeworld</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">homeworld</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Overwrite the homeworld value with the parsed response</span>
+      <span class="c1">// from the fetch call</span>
+      <span class="nx">person</span><span class="p">.</span><span class="nx">homeworld</span> <span class="o">=</span> <span class="nx">homeworld</span><span class="p">;</span>
+      <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// Call the function, because it returns a promise, we need to</span>
+<span class="c1">// threat it like that using .then</span>
+<span class="nx">getPersonWithHomeworld</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+</code></pre></div></div>
+:ET

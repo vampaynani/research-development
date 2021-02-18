@@ -1,0 +1,2 @@
+I"<p>Ejemplo de una clase de árbol binario de búsqueda agregando los métodos de <em>distanceBetweenNodes</em> y <em>distanceFromAncestor</em> para obtener la distancia entre nodos en un BST. Utiliza una clase nodo para guardar los datos de cada uno de los items almacenados en él.</p>
+:ET

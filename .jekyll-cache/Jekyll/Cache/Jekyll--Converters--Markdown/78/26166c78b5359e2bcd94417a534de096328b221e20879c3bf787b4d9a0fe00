@@ -1,0 +1,9 @@
+I"�<p>```javascript
+function* idGenerator() {
+  let i = 0;
+  while (true) {
+    const id = (i++).toString().padStart(4, “0”);
+    yield <code class="language-plaintext highlighter-rouge">department-area-${id}</code>;
+  }
+}</p>
+:ET

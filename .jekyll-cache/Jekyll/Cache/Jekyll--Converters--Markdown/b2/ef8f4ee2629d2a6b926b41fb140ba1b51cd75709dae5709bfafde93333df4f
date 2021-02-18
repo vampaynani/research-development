@@ -1,0 +1,33 @@
+I"�	<h2 id="dbeaver">DBeaver</h2>
+
+<p>Once in your database view on Digital Ocean, go to Overview tab and select Connection details.
+Download the ca-certificate.crt.
+Go to DBeaver and select “New Database Connection / PostgreSQL”
+On Main tab set Host, Port, Database, User, Password copying it from the Connection parameters set in Digital Ocean.
+On SSL tab select “Use SSL” and set as Root certificate the downloaded cert.
+Ready to go!</p>
+
+<h2 id="knex">Knex</h2>
+
+<p>Once in your database view on Digital Ocean, go to Overview tab and select Connection details.
+Select Connection string tab and choose between public/private network.
+Then just copy the connection string and save it as DATABASE_URL in the <code class="language-plaintext highlighter-rouge">.env</code> file of your project.
+Once, the previous steps are complete, set the <code class="language-plaintext highlighter-rouge">knexfile.js</code> to be like:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">development</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">client</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pg</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">connection</span><span class="p">:</span> <span class="dl">"</span><span class="s2">postgresql://postgres@localhost/your-db</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+
+  <span class="na">production</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">client</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pg</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">connection</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_URL</span><span class="p">}</span><span class="s2">&amp;ssl=true`</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li>The last part of <code class="language-plaintext highlighter-rouge">production.connection</code> is quite important, if that flag is not set you will have an SSL error.</li>
+</ul>
+:ET
