@@ -1,2 +1,0 @@
-I"U<p>Dando soporte a uno de nuestros proyectos en el que cualquier opción distinta a Sqlite estaba sobrada, decidimos utilizarlo en conjunto con un script que teníamos desarrollado con PDO ya que la migración en este sentido era sencilla, el problema que encontramos fué que por default Ubuntu no incluye el driver de Sqlite para PDO.</p>
-:ET

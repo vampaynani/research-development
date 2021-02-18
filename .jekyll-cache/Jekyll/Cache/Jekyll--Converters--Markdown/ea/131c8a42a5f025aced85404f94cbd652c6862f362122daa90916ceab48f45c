@@ -1,2 +1,0 @@
-I"�<p>Me encontré con un caso particular en el que un usuario podía tener uno de dos tipos de roles(alumno o profesor), los dos debían hacer login desde el mismo endpoint y para registrarse lo hacían con los mismos datos(correo, nombre y apellidos), la diferencia entre estos sucede al llenar un perfil correspondiente a su rol, por ejemplo: de uno guardamos su cuota mensual y del otro las horas de trabajo.</p>
-:ET
