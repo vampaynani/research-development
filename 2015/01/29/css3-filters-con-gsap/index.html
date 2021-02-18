@@ -2,9 +2,9 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>CSS3 Filters con GSAP | Vampaynani’s Research &amp; Development</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="CSS3 Filters con GSAP" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Soy muy fan de la librería de GSAP desde que era TweenMax para AS3, además de que sigue pateando traseros a las animaciones de jQuery, Angular, las nativas de CSS3 y se da un quienvive con famo.us." />
@@ -14,10 +14,12 @@
 <meta property="og:site_name" content="Vampaynani’s Research &amp; Development" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-01-29T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="CSS3 Filters con GSAP" />
 <script type="application/ld+json">
-{"description":"Soy muy fan de la librería de GSAP desde que era TweenMax para AS3, además de que sigue pateando traseros a las animaciones de jQuery, Angular, las nativas de CSS3 y se da un quienvive con famo.us.","headline":"CSS3 Filters con GSAP","dateModified":"2015-01-29T00:00:00-06:00","datePublished":"2015-01-29T00:00:00-06:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://vampaynani.github.io/research-development/research-development/2015/01/29/css3-filters-con-gsap/"},"url":"https://vampaynani.github.io/research-development/research-development/2015/01/29/css3-filters-con-gsap/","@context":"http://schema.org"}</script>
+{"headline":"CSS3 Filters con GSAP","dateModified":"2015-01-29T00:00:00-06:00","datePublished":"2015-01-29T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vampaynani.github.io/research-development/research-development/2015/01/29/css3-filters-con-gsap/"},"description":"Soy muy fan de la librería de GSAP desde que era TweenMax para AS3, además de que sigue pateando traseros a las animaciones de jQuery, Angular, las nativas de CSS3 y se da un quienvive con famo.us.","url":"https://vampaynani.github.io/research-development/research-development/2015/01/29/css3-filters-con-gsap/","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/research-development/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://vampaynani.github.io/research-development/research-development/feed.xml" title="Vampaynani's Research & Development" /><!-- Global site tag (gtag.js) - Google Analytics -->
+<link rel="stylesheet" href="/research-development/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://vampaynani.github.io/research-development/research-development/feed.xml" title="Vampaynani's Research &amp; Development" /><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40504202-4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -57,7 +59,7 @@
     <p>Soy muy fan de la librería de GSAP desde que era TweenMax para AS3, además de que sigue pateando traseros a las animaciones de jQuery, Angular, las nativas de CSS3 y se da un quienvive con famo.us.</p>
 
 <p>Sin embargo y como todo, deben asegurarse de que es una librería robusta y no pueden experimentar tan fácil con tantas cosas por lo que de momento <a href="http://greensock.com/forums/topic/6967-css3-filters-support/">los filtros de CSS3 los tienen descartados hasta nuevo aviso</a>. Aunque eso no quiere decir que no haya manera de implementarlos como en el código que dejo a continuación:</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'img'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">blur</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="na">brightness</span><span class="p">:</span> <span class="mi">0</span>
@@ -67,12 +69,12 @@
   <span class="na">brightness</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span>
   <span class="na">onUpdate</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span>
-      <span class="s1">'filter'</span><span class="p">,</span> 
+      <span class="dl">'</span><span class="s1">filter</span><span class="dl">'</span><span class="p">,</span> 
       <span class="s2">`blur(</span><span class="p">${</span><span class="nx">filters</span><span class="p">.</span><span class="nx">blur</span><span class="p">}</span><span class="s2">px)
       brightness(</span><span class="p">${</span><span class="nx">filters</span><span class="p">.</span><span class="nx">brightness</span><span class="p">}</span><span class="s2">)`</span>
     <span class="p">);</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span>
-      <span class="s1">'-webkit-filter'</span><span class="p">,</span> 
+      <span class="dl">'</span><span class="s1">-webkit-filter</span><span class="dl">'</span><span class="p">,</span> 
       <span class="s2">`blur(</span><span class="p">${</span><span class="nx">filters</span><span class="p">.</span><span class="nx">blur</span><span class="p">}</span><span class="s2">px)
       brightness(</span><span class="p">${</span><span class="nx">filters</span><span class="p">.</span><span class="nx">brightness</span><span class="p">}</span><span class="s2">)`</span>
     <span class="p">);</span>

@@ -2,9 +2,9 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Make a multi resolution .ico file from ubuntu with image magick | Vampaynani’s Research &amp; Development</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Make a multi resolution .ico file from ubuntu with image magick" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="1. Install Image Magick in Ubuntu. sudo apt install gcc imagemagick 2. Using your icon design create the source files. Remember that each size should be a square and you need to make sure to have all this sizes so any device can render it correctly, the files could be .png, .jpg or .bmp. icon-512.png icon-256.png icon-128.png icon-64.png icon-32.png Be careful and save all of the icons in the same directory. 3. Use Image Magick to generate the favicon. Move in to the icons directory on your terminal. cd /dir/to/my/icons/directory Then run the image magick command to create the favicon based on all of the given icons. convert icon-32.png icon-64.png icon-128.png icon-256.png icon-512.png favicon.ico And there you are, multi resolution favicon ready to go." />
@@ -14,10 +14,12 @@
 <meta property="og:site_name" content="Vampaynani’s Research &amp; Development" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-06-25T01:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Make a multi resolution .ico file from ubuntu with image magick" />
 <script type="application/ld+json">
-{"description":"1. Install Image Magick in Ubuntu. sudo apt install gcc imagemagick 2. Using your icon design create the source files. Remember that each size should be a square and you need to make sure to have all this sizes so any device can render it correctly, the files could be .png, .jpg or .bmp. icon-512.png icon-256.png icon-128.png icon-64.png icon-32.png Be careful and save all of the icons in the same directory. 3. Use Image Magick to generate the favicon. Move in to the icons directory on your terminal. cd /dir/to/my/icons/directory Then run the image magick command to create the favicon based on all of the given icons. convert icon-32.png icon-64.png icon-128.png icon-256.png icon-512.png favicon.ico And there you are, multi resolution favicon ready to go.","headline":"Make a multi resolution .ico file from ubuntu with image magick","dateModified":"2019-06-25T01:00:00-05:00","datePublished":"2019-06-25T01:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon/"},"url":"https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon/","@context":"http://schema.org"}</script>
+{"headline":"Make a multi resolution .ico file from ubuntu with image magick","dateModified":"2019-06-25T01:00:00-05:00","datePublished":"2019-06-25T01:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon/"},"description":"1. Install Image Magick in Ubuntu. sudo apt install gcc imagemagick 2. Using your icon design create the source files. Remember that each size should be a square and you need to make sure to have all this sizes so any device can render it correctly, the files could be .png, .jpg or .bmp. icon-512.png icon-256.png icon-128.png icon-64.png icon-32.png Be careful and save all of the icons in the same directory. 3. Use Image Magick to generate the favicon. Move in to the icons directory on your terminal. cd /dir/to/my/icons/directory Then run the image magick command to create the favicon based on all of the given icons. convert icon-32.png icon-64.png icon-128.png icon-256.png icon-512.png favicon.ico And there you are, multi resolution favicon ready to go.","url":"https://vampaynani.github.io/research-development/research-development/2019/06/25/generate-local-favicon/","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/research-development/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://vampaynani.github.io/research-development/research-development/feed.xml" title="Vampaynani's Research & Development" /><!-- Global site tag (gtag.js) - Google Analytics -->
+<link rel="stylesheet" href="/research-development/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://vampaynani.github.io/research-development/research-development/feed.xml" title="Vampaynani's Research &amp; Development" /><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40504202-4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -76,7 +78,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /dir/to/my/icons/directory
 </code></pre></div></div>
 <p>Then run the image magick command to create the favicon based on all of the given icons.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert icon-32.png icon-64.png icon-128.png icon-256.png icon-512.png favicon.ico
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert icon-32.png icon-64.png icon-128.png icon-256.png icon-512.png favicon.ico
 </code></pre></div></div>
 
 <p>And there you are, multi resolution favicon ready to go.</p>
